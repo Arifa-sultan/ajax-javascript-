@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax in javascript</title>
+</head>
+<body>
+<div>hello</div>
+<button id="loaddata">Load Data</button>
+<button id="result"></button>
+
+
+<script>
+document.getElementById('loaddata').addEventListener('click',function(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','https://jsonplaceholder.typicode.com/post/',true);
+    xhr.load = function(){
+        if(xhr.status===200){
+            document.getElementById('result').innerHTML=xhr.responseText;
+        }else{
+            document.getElementById('result').innerHTML='error:could not load data';
+        }
+    };
+    xhr.send();
+});
+</script>
+    <script src="xhr.js"></script>
+</body>
+</html>
